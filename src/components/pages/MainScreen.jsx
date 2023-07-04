@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GameScreen from '../organisms/GameScreen';
-import InstructionScreen from '../organisms/InstructionScreen';
+import InstructionScreen from '../organisms/InstructionsScreen';
 import SettingsScreen from '../organisms/SettingsScreen';
 import './MainScreen.css'
 
