@@ -1,8 +1,8 @@
 import React from "react";
 
-const GameScreen = () => {
+const GameScreen = ({withBot=true}) => {
 
-  return <div>Jugá acá</div>
+  return (withBot && <div>Jugá acá</div>)
 };
 
 export default GameScreen;

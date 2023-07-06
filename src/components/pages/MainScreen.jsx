@@ -9,6 +9,8 @@ const MainScreen = () => {
 
   const settings = () => setStage("settings");
   const showInstructions = () => setStage("instructions");
+  const gameWithBot = () => setStage("gameWithBot");
+  const gameLocal = () => setStage("gameLocal");
 
   let content;
   if (stage === "welcome") {
@@ -24,9 +26,11 @@ const MainScreen = () => {
   } else if (stage === "instructions") {
     content = <RulesScreen settings={settings} />;
   } else if (stage === "settings") {
-    content = <SettingsScreen />;
-  } else if (stage === "game") {
-    content = <GameScreen />;
+    content = <SettingsScreen gameWithBot={gameWithBot} gameLocal={gameLocal} />;
+  } else if (stage === "gameWithBot") {
+    content = <GameScreen withBot={true}/>;
+  } else if (stage === "gameLocal") {
+    content = <GameScreen withBot={false}/>;
   }
 
   return (
