@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GameScreen from "../organisms/GameScreen";
-import InstructionScreen from "../organisms/InstructionsScreen";
+import RulesScreen from "../organisms/RulesScreen";
 import SettingsScreen from "../organisms/SettingsScreen";
 import "./MainScreen.css";
 
@@ -14,17 +14,19 @@ const MainScreen = () => {
   if (stage === "welcome") {
     content = (
       <div>
-        <h1>Rock, papers, scissors, lizard or spock!</h1>
+        <h1>Rock, Paper, Scissors, Lizard or Spock!</h1>
         <h2>Bienvenido!</h2>
         <h3>¿Sabés cómo jugar?</h3>
-        <button onClick={settings}>Si! :D</button>
-        <button onClick={showInstructions}>No :(</button>
+        <button onClick={settings}>¡Sí! :D</button>
+        <button onClick={showInstructions}>¡No! :(</button>
       </div>
     );
   } else if (stage === "instructions") {
-    content = <InstructionScreen startGame={settings} />;
+    content = <RulesScreen settings={settings} />;
   } else if (stage === "settings") {
     content = <SettingsScreen />;
+  } else if (stage === "game") {
+    content = <GameScreen />;
   }
 
   return (
