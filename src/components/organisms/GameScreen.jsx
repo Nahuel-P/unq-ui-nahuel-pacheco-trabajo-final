@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from 'react';
+import GameWithBot from './GameWithBot';
+import GameWithOtherPlayer from './GameWithOtherPlayer';
 
-const GameScreen = () => {
+function GameScreen() {
+  const [isBotGame, setIsBotGame] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
-  return (true && 
-  <div>
-    <h1>Modo de juego</h1>
-    <button> 1 Jugador (vs Bot)</button>
-    <button> 2 Jugadores (Local)</button>
-  <div>Jugá acá</div>
-  </div>)
-};
+  const handleButtonClick = (isBotGame) => {
+    setIsGameStarted(true);
+    setIsBotGame(isBotGame);
+  };
+
+  return (
+    <div>
+      <h1>Modo de juego</h1>
+      <button onClick={() => handleButtonClick(true)}>1 Jugador (vs Bot)</button>
+      <button onClick={() => handleButtonClick(false)}>2 Jugadores (vs otro jugador)</button>
+      
+      {isGameStarted && (isBotGame ? <GameWithBot /> : <GameWithOtherPlayer />)}
+    </div>
+  );
+}
 
 export default GameScreen;
