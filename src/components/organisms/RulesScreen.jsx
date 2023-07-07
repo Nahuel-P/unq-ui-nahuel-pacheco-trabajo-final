@@ -7,7 +7,7 @@ import Paper from "../atoms/Paper";
 import rules from "../atoms/rules.png";
 import "./RulesScreen.css";
 
-const RulesScreen = ({settings}) => {
+const RulesScreen = ({showGameScreen}) => {
   return (
     <div className="rules-container">
       <h1 className="rules-title">Reglas</h1>
@@ -69,7 +69,7 @@ const RulesScreen = ({settings}) => {
       <img src={rules} alt="rules" className="rules-img" />
 
       <h3>¿Listo?</h3>
-      <button onClick={settings}>Vamo a jugar</button>
+      <button onClick={showGameScreen}>Vamo a jugar</button>
     </div>
   );
 };
