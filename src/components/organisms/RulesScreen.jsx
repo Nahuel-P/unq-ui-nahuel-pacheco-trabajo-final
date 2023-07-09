@@ -73,7 +73,7 @@ const RulesScreen = ({showGameScreen}) => {
       <img src={rules} alt="rules" className="rules-img" />
 
       <h3>¿Listo?</h3>
-      <button onClick={showGameScreen}>Vamo a jugar</button>
+      <button className="button" onClick={showGameScreen}>Vamo a jugar</button>
     </div>
   );
 };

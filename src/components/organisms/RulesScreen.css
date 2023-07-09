@@ -30,6 +30,19 @@ body {
   margin-top: -15px;
 }
 
+.button {
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #016172;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #268899;
+}
+
 @media (max-width: 768px) {
   body {
     overflow: auto;
@@ -40,6 +53,9 @@ body {
   }
   .rules-column {
     margin-top: -15px;
+  }
+  .button {
+    font-size: 16px;
   }
 }
 
@@ -62,5 +78,5 @@ body {
 
 .rules-title {
   margin-top: -25px;
-  margin-bottom: -15px;
 }
+
