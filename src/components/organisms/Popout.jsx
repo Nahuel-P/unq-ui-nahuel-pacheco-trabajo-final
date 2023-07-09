@@ -6,9 +6,9 @@ const Popout = ({ onSinglePlayerClick, onTwoPlayersClick, onClose }) => {
     <div className="backdrop" onClick={onClose}>
       <div className="modal" onClick={e => e.stopPropagation()}>
         <button className="close-button" onClick={onClose}>X</button>
-        <h1>Choose Game Mode</h1>
-        <button onClick={onSinglePlayerClick}>1 Jugador</button>
-        <button onClick={onTwoPlayersClick}>2 Jugadores</button>
+        <h2 className="title-popout">Modo de juego</h2>
+        <button className="button-popout" onClick={onSinglePlayerClick}>1 Jugador</button>
+        <button className="button-popout" onClick={onTwoPlayersClick}>2 Jugadores</button>
       </div>
     </div>
   );
