@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const options = ["piedra", "papel", "tijeras", "lagarto", "spock"];
 
-function GameWithBot() {
+const GameWithBot = () => {
   const [userChoice, setUserChoice] = useState(null);
   const [botChoice, setBotChoice] = useState(null);
   const [result, setResult] = useState(null);
