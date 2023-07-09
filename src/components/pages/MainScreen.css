@@ -42,11 +42,78 @@ h1, h2{
   margin-bottom: 0;
 }
 
-h1{
-  font-size: 40px;
+.main-title{
+  font-size: 50px;
 }
 
-h2{
+.welcome{
   margin-top: 10px;
   font-size: 30px;
+}
+
+.choice-how-to-play {
+  padding-top: 50px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  padding: 20px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #016172;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #268899;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+  .content {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+  }
+
+  .logo {
+    height: 30%;
+    width: 30%;
+  }
+
+  .main-title {
+    font-size: 40px;
+  }
+
+  .welcome {
+    font-size: 24px;
+  }
+
+  .choice-how-to-play {
+    padding-top: 30px;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    padding: 15px 18px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
 }

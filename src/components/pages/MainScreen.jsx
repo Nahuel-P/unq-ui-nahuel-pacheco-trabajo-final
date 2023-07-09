@@ -14,12 +14,14 @@ const MainScreen = () => {
   if (stage === "welcome") {
     content = (
       <div>
-        <h1>Rock, Paper, Scissors, Lizard or Spock!</h1>
+        <h1 className="main-title">Piedra, Papel, Tijeras, Lagarto ó Spock!</h1>
         <img src={logo} className="logo" alt="game-logo" />
-        <h2>Bienvenido!</h2>
-        <h3>¿Sabés cómo jugar?</h3>
-        <button onClick={game}>¡Sí! :D</button>
-        <button onClick={showInstructions}>¡No! :(</button>
+        <h2 className="welcome">¡Bienvenido!</h2>
+        <h3 className="choice-how-to-play">¿Sabés cómo jugar?</h3>
+        <div className="button-container">
+          <button className="button" onClick={game}>Sí</button>
+          <button className="button" onClick={showInstructions}>No</button>
+        </div>
       </div>
     );
   } else if (stage === "instructions") {
