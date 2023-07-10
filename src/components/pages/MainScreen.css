@@ -79,6 +79,24 @@ h1, h2{
   background-color: #268899;
 }
 
+.home-button {
+  position:relative;
+  top:0;
+  left:0;
+  padding: 10px;
+  background-color: #181a3a; 
+  border: none;
+  cursor: pointer;
+}
+
+.home-button svg {
+  color: #016172;
+  font-size: 24px;
+}
+
+.home-button:hover svg {
+  color: #268899;
+}
 @media only screen and (max-width: 600px) {
   body {
     overflow: auto;

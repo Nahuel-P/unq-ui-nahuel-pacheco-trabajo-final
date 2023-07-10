@@ -4,6 +4,7 @@ import RulesScreen from "../organisms/RulesScreen";
 import Popout from "../organisms/Popout";
 import "./MainScreen.css";
 import logo from "../atoms/welcome-screen.png";
+import { FaHome } from "react-icons/fa";
 
 const MainScreen = () => {
   const [stage, setStage] = useState("welcome");
@@ -12,6 +13,7 @@ const MainScreen = () => {
 
   const showInstructions = () => setStage("instructions");
   const gameMode = () => setPopoutVisible(true);
+  const showMain = () => setStage("welcome");
 
   let mainContent;
   if (stage === "welcome") {
@@ -22,8 +24,12 @@ const MainScreen = () => {
         <h2 className="welcome">¡Bienvenido!</h2>
         <h3 className="choice-how-to-play">¿Sabés cómo jugar?</h3>
         <div className="button-container">
-          <button className="button" onClick={gameMode}>Sí</button>
-          <button className="button" onClick={showInstructions}>No</button>
+          <button className="button" onClick={gameMode}>
+            Sí
+          </button>
+          <button className="button" onClick={showInstructions}>
+            No
+          </button>
         </div>
       </div>
     );
@@ -35,11 +41,24 @@ const MainScreen = () => {
 
   return (
     <div className="layout">
-      <div className="content">{mainContent}</div>
+      <div className="content">
+        {stage !== "welcome" && (
+          <button className="home-button" onClick={showMain}>
+            <FaHome />
+          </button>
+        )}
+        {mainContent}
+      </div>
       {isPopoutVisible && (
         <Popout
-          onSinglePlayerClick={() => { setStage("gameSingle"); closeModal(); }}
-          onTwoPlayersClick={() => { setStage("gameMulti"); closeModal(); }}
+          onSinglePlayerClick={() => {
+            setStage("gameSingle");
+            closeModal();
+          }}
+          onTwoPlayersClick={() => {
+            setStage("gameMulti");
+            closeModal();
+          }}
           onClose={closeModal}
         />
       )}
