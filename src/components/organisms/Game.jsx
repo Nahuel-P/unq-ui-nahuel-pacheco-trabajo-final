@@ -78,8 +78,9 @@ const Game = ({ isMultiplayer }) => {
   const OptionComponent2 = optionComponents[player2Choice];
 
   return (
-    <div>
-      <h1>{isMultiplayer ? 'Multijugador' : 'Jugando con bot'}</h1>
+    <div className="game-container">
+      <button className="rules-button">Reglas</button>
+      <h1 className="game-title">{isMultiplayer ? 'Multijugador' : 'Jugando con bot'}</h1>
       <div className="options-container">
         <div className="column">
           <h2>{isMultiplayer ? 'Jugador 1' : 'Usuario'}</h2>
@@ -133,8 +134,8 @@ const Game = ({ isMultiplayer }) => {
             <p>Puntaje: {player1Wins}</p>
             <p>Puntaje: {player2Wins}</p>
           </div>
-          <button onClick={playAgain}>Jugar de nuevo</button>
-          <button onClick={resetGame}>Reiniciar puntaje</button>
+          <button className="game-button" onClick={playAgain}>Jugar de nuevo</button>
+          <button className="game-button" onClick={resetGame}>Reiniciar puntaje</button>
         </div>
       )}
     </div>
