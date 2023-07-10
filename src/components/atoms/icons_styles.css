@@ -19,5 +19,8 @@
 .disabled {
   opacity: 0.5;
   pointer-events: none;
+}
 
+.result{
+  max-width: 50px; 
 }

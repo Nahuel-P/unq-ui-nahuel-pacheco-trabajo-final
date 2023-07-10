@@ -4,9 +4,16 @@ import Paper from "../atoms/Paper";
 import Rock from "../atoms/Rock";
 import Scissors from "../atoms/Scissors";
 import Spock from "../atoms/Spock";
+import "./GameWithOtherPlayer.css";
 
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
-const optionComponents = [Rock, Paper, Scissors, Lizard, Spock];
+const optionComponents = {
+  rock: Rock,
+  paper: Paper,
+  scissors: Scissors,
+  lizard: Lizard,
+  spock: Spock,
+};
 const winConditions = {
   rock: ["scissors", "lizard"],
   paper: ["rock", "spock"],
@@ -38,12 +45,12 @@ const GameWithOtherPlayer = () => {
 
   const determineWinner = (player1Choice, player2Choice) => {
     if (player1Choice === player2Choice) {
-      setResult("It's a tie!");
+      setResult("¡Empate!");
     } else if (winConditions[player1Choice].includes(player2Choice)) {
-      setResult("Player 1 wins!");
+      setResult("¡Jugador 1 gana!");
       setPlayer1Wins(player1Wins + 1);
     } else {
-      setResult("Player 2 wins!");
+      setResult("¡Jugador 2 gana!");
       setPlayer2Wins(player2Wins + 1);
     }
   };
@@ -62,39 +69,68 @@ const GameWithOtherPlayer = () => {
     setResult(null);
   };
 
+  const OptionComponent = optionComponents[player1Choice];
+  const OptionComponent2 = optionComponents[player2Choice];
+
   return (
     <div>
-      <h1>Rock Paper Scissors Lizard Spock</h1>
-      <div>
-        {optionComponents.map((OptionComponent, index) => (
-          <OptionComponent
-            key={options[index]}
-            context="on-game"
-            onClick={() => playGame(1, options[index])}
-            disabled={!!player1Choice}
-          />
-        ))}
+      <h1>Multijugador</h1>
+      <div className="options-container">
+        <div className="column">
+          <h2>Jugador 1</h2>
+          {options.map((option) => {
+            const OptionComponent = optionComponents[option];
+            return (
+              <OptionComponent
+                key={option}
+                context="on-game"
+                onClick={() => playGame(1, option)}
+                disabled={!!player1Choice}
+              />
+            );
+          })}
+          <div className="choice-text">
+            {player1Choice && player2Choice && (
+              <>
+                <p>Jugador 1 eligió:</p>
+                <OptionComponent key={player1Choice} context="result" />
+              </>
+            )}
+          </div>
+        </div>
+        <div className="column">
+          <h2>Jugador 2</h2>
+          {options.map((option) => {
+            const OptionComponent = optionComponents[option];
+            return (
+              <OptionComponent
+                key={option}
+                context="on-game"
+                onClick={() => playGame(2, option)}
+                disabled={!!player2Choice}
+              />
+            );
+          })}
+          <div className="choice-text">
+            {player1Choice && player2Choice && (
+              <>
+                <p>Jugador 2 eligió:</p>
+                <OptionComponent2 key={player2Choice} context="result" />
+              </>
+            )}
+          </div>
+        </div>
       </div>
-      <div>
-        {optionComponents.map((OptionComponent, index) => (
-          <OptionComponent
-            key={options[index]}
-            context="on-game"
-            onClick={() => playGame(2, options[index])}
-            disabled={!!player2Choice}
-          />
-        ))}
-      </div>
-      {player1Choice && player2Choice && (
-        <>
-          <h2>Result: {result}</h2>
-          <h2>Player 1: {player1Choice}</h2>
-          <h2>Player 2: {player2Choice}</h2>
-          <h2>Player 1 Wins: {player1Wins}</h2>
-          <h2>Player 2 Wins: {player2Wins}</h2>
+      {player1Choice && player2Choice && result && (
+        <div className="result-container">
+          <h2 className="result-text">{result}</h2>
+          <div className="score">
+            <p>Puntaje: {player1Wins}</p>
+            <p>Puntaje: {player2Wins}</p>
+          </div>
           <button onClick={playAgain}>Play Again</button>
           <button onClick={resetGame}>Reset Game</button>
-        </>
+        </div>
       )}
     </div>
   );
