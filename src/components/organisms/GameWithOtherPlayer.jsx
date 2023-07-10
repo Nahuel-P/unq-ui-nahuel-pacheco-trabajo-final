@@ -4,7 +4,7 @@ import Paper from "../atoms/Paper";
 import Rock from "../atoms/Rock";
 import Scissors from "../atoms/Scissors";
 import Spock from "../atoms/Spock";
-import "./GameWithOtherPlayer.css";
+import "./Game.css";
 
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
 const optionComponents = {
@@ -128,8 +128,8 @@ const GameWithOtherPlayer = () => {
             <p>Puntaje: {player1Wins}</p>
             <p>Puntaje: {player2Wins}</p>
           </div>
-          <button onClick={playAgain}>Play Again</button>
-          <button onClick={resetGame}>Reset Game</button>
+          <button onClick={playAgain}>Jugar de nuevo</button>
+          <button onClick={resetGame}>Reiniciar puntaje</button>
         </div>
       )}
     </div>

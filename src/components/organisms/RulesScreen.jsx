@@ -68,10 +68,11 @@ const RulesScreen = ({showGameScreen}) => {
           </li>
         </ul>
       </div>
-
+      
       <h2>Una ayuda gráfica</h2>
       <img src={rules} alt="rules" className="rules-img" />
 
+      <p className="how-to-play">Para jugar, simplemente tocá el icono de tu elección una vez empezado el juego</p>
       <h3>¿Listo?</h3>
       <button className="button" onClick={showGameScreen}>Vamo a jugar</button>
     </div>

@@ -4,9 +4,16 @@ import Paper from "../atoms/Paper";
 import Rock from "../atoms/Rock";
 import Scissors from "../atoms/Scissors";
 import Spock from "../atoms/Spock";
+import "./Game.css";
 
 const options = ["piedra", "papel", "tijeras", "lagarto", "spock"];
-const optionComponents = [Rock, Paper, Scissors, Lizard, Spock];
+const optionComponents = {
+  piedra: Rock,
+  papel: Paper,
+  tijeras: Scissors,
+  lagarto: Lizard,
+  spock: Spock,
+};
 const winConditions = {
   piedra: ["tijeras", "lagarto"],
   papel: ["piedra", "spock"],
@@ -50,27 +57,66 @@ const GameWithBot = () => {
     setBotWins(0);
   };
 
+  const OptionComponent = optionComponents[userChoice];
+  const OptionComponent2 = optionComponents[botChoice];
+
   return (
     <div>
       <h1>Jugando con bot</h1>
-      <div>
-        {optionComponents.map((OptionComponent, index) => (
-          <OptionComponent
-            key={options[index]}
-            context="on-game"
-            onClick={() => playGame(options[index])}
-          />
-        ))}
+      <div className="options-container">
+        <div className="column">
+          <h2>Usuario</h2>
+          {options.map((option) => {
+            const OptionComponent = optionComponents[option];
+            return (
+              <OptionComponent
+                key={option}
+                context="on-game"
+                onClick={() => playGame(option)}
+              />
+            );
+          })}
+          <div className="choice-text">
+            {userChoice && botChoice && (
+              <>
+                <p>Usuario eligió:</p>
+                <OptionComponent key={userChoice} context="result" />
+              </>
+            )}
+          </div>
+        </div>
+        <div className="column">
+          <h2>Bot</h2>
+          {options.map((option) => {
+            const OptionComponent = optionComponents[option];
+            return (
+              <OptionComponent
+                key={option}
+                context="on-game"
+                onClick={() => {}}
+                disabled={true}
+              />
+            );
+          })}
+          <div className="choice-text">
+            {userChoice && botChoice && (
+              <>
+                <p>Bot eligió:</p>
+                <OptionComponent2 key={botChoice} context="result" />
+              </>
+            )}
+          </div>
+        </div>
       </div>
-      {userChoice && botChoice && (
-        <>
-          <h2>Usuario: {userChoice}</h2>
-          <h2>Bot: {botChoice}</h2>
-          <h2>{result}</h2>
-          <h2>Ganadas: {userWins}</h2>
-          <h2>Ganadas por bot: {botWins}</h2>
-          <button onClick={resetGame}>Reset Game</button>
-        </>
+      {userChoice && botChoice && result && (
+        <div className="result-container">
+          <h2 className="result-text">{result}</h2>
+          <div className="score">
+            <p>Puntaje: {userWins}</p>
+            <p>Puntaje: {botWins}</p>
+          </div>
+          <button className="button" onClick={resetGame}>Reiniciar Puntaje</button>
+        </div>
       )}
     </div>
   );
