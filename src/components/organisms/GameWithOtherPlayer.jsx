@@ -7,6 +7,13 @@ import Spock from "../atoms/Spock";
 
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
 const optionComponents = [Rock, Paper, Scissors, Lizard, Spock];
+const winConditions = {
+  rock: ["scissors", "lizard"],
+  paper: ["rock", "spock"],
+  scissors: ["paper", "lizard"],
+  lizard: ["paper", "spock"],
+  spock: ["rock", "scissors"],
+};
 
 const GameWithOtherPlayer = () => {
   const [player1Choice, setPlayer1Choice] = useState(null);
@@ -32,18 +39,7 @@ const GameWithOtherPlayer = () => {
   const determineWinner = (player1Choice, player2Choice) => {
     if (player1Choice === player2Choice) {
       setResult("It's a tie!");
-    } else if (
-      (player1Choice === "rock" &&
-        (player2Choice === "scissors" || player2Choice === "lizard")) ||
-      (player1Choice === "paper" &&
-        (player2Choice === "rock" || player2Choice === "spock")) ||
-      (player1Choice === "scissors" &&
-        (player2Choice === "paper" || player2Choice === "lizard")) ||
-      (player1Choice === "lizard" &&
-        (player2Choice === "paper" || player2Choice === "spock")) ||
-      (player1Choice === "spock" &&
-        (player2Choice === "rock" || player2Choice === "scissors"))
-    ) {
+    } else if (winConditions[player1Choice].includes(player2Choice)) {
       setResult("Player 1 wins!");
       setPlayer1Wins(player1Wins + 1);
     } else {

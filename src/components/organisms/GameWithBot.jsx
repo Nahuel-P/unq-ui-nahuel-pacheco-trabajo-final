@@ -7,6 +7,13 @@ import Spock from "../atoms/Spock";
 
 const options = ["piedra", "papel", "tijeras", "lagarto", "spock"];
 const optionComponents = [Rock, Paper, Scissors, Lizard, Spock];
+const winConditions = {
+  piedra: ["tijeras", "lagarto"],
+  papel: ["piedra", "spock"],
+  tijeras: ["papel", "lagarto"],
+  lagarto: ["papel", "spock"],
+  spock: ["piedra", "tijeras"],
+};
 
 const GameWithBot = () => {
   const [userChoice, setUserChoice] = useState(null);
@@ -26,18 +33,7 @@ const GameWithBot = () => {
   const determineWinner = (userChoice, botChoice) => {
     if (userChoice === botChoice) {
       setResult("Empate!");
-    } else if (
-      (userChoice === "piedra" &&
-        (botChoice === "tijeras" || botChoice === "lagarto")) ||
-      (userChoice === "papel" &&
-        (botChoice === "piedra" || botChoice === "spock")) ||
-      (userChoice === "tijeras" &&
-        (botChoice === "papel" || botChoice === "lagarto")) ||
-      (userChoice === "lagarto" &&
-        (botChoice === "papel" || botChoice === "spock")) ||
-      (userChoice === "spock" &&
-        (botChoice === "piedra" || botChoice === "tijeras"))
-    ) {
+    } else if (winConditions[userChoice].includes(botChoice)) {
       setResult("Ganaste!");
       setUserWins(userWins + 1);
     } else {
@@ -66,12 +62,16 @@ const GameWithBot = () => {
           />
         ))}
       </div>
-      <h2>Usuario: {userChoice}</h2>
-      <h2>Bot: {botChoice}</h2>
-      <h2>{result}</h2>
-      <h2>Ganadas: {userWins}</h2>
-      <h2>Ganadas por bot: {botWins}</h2>
-      <button onClick={resetGame}>Reset Game</button>
+      {userChoice && botChoice && (
+        <>
+          <h2>Usuario: {userChoice}</h2>
+          <h2>Bot: {botChoice}</h2>
+          <h2>{result}</h2>
+          <h2>Ganadas: {userWins}</h2>
+          <h2>Ganadas por bot: {botWins}</h2>
+          <button onClick={resetGame}>Reset Game</button>
+        </>
+      )}
     </div>
   );
 };
