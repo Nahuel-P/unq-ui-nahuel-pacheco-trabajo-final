@@ -1,0 +1,19 @@
+.not-found{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+    margin-top: 200px;
+}
+
+.not-found-gif{
+  margin: 0 auto;
+  display: block;
+}
