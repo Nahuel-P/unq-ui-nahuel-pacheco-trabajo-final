@@ -22,7 +22,7 @@ const winConditions = {
   spock: ["rock", "scissors"],
 };
 
-const GameWithOtherPlayer = () => {
+const Game = ({ isMultiplayer }) => {
   const [player1Choice, setPlayer1Choice] = useState(null);
   const [player2Choice, setPlayer2Choice] = useState(null);
   const [result, setResult] = useState(null);
@@ -38,6 +38,11 @@ const GameWithOtherPlayer = () => {
   const playGame = (player, choice) => {
     if (player === 1) {
       setPlayer1Choice(choice);
+      if (!isMultiplayer) {
+        const randomIndex = Math.floor(Math.random() * options.length);
+        const botChoice = options[randomIndex];
+        setPlayer2Choice(botChoice);
+      }
     } else {
       setPlayer2Choice(choice);
     }
@@ -47,10 +52,10 @@ const GameWithOtherPlayer = () => {
     if (player1Choice === player2Choice) {
       setResult("¡Empate!");
     } else if (winConditions[player1Choice].includes(player2Choice)) {
-      setResult("¡Jugador 1 gana!");
+      setResult(isMultiplayer ? "¡Jugador 1 gana!" : "¡Ganaste!");
       setPlayer1Wins(player1Wins + 1);
     } else {
-      setResult("¡Jugador 2 gana!");
+      setResult(isMultiplayer ? "¡Jugador 2 gana!" : "¡El bot gana!");
       setPlayer2Wins(player2Wins + 1);
     }
   };
@@ -74,10 +79,10 @@ const GameWithOtherPlayer = () => {
 
   return (
     <div>
-      <h1>Multijugador</h1>
+      <h1>{isMultiplayer ? 'Multijugador' : 'Jugando con bot'}</h1>
       <div className="options-container">
         <div className="column">
-          <h2>Jugador 1</h2>
+          <h2>{isMultiplayer ? 'Jugador 1' : 'Usuario'}</h2>
           {options.map((option) => {
             const OptionComponent = optionComponents[option];
             return (
@@ -92,29 +97,29 @@ const GameWithOtherPlayer = () => {
           <div className="choice-text">
             {player1Choice && player2Choice && (
               <>
-                <p>Jugador 1 eligió:</p>
+                <p>{isMultiplayer ? 'Jugador 1 eligió:' : 'Usuario eligió:'}</p>
                 <OptionComponent key={player1Choice} context="result" />
               </>
             )}
           </div>
         </div>
         <div className="column">
-          <h2>Jugador 2</h2>
+          <h2>{isMultiplayer ? 'Jugador 2' : 'Bot'}</h2>
           {options.map((option) => {
             const OptionComponent = optionComponents[option];
             return (
               <OptionComponent
                 key={option}
                 context="on-game"
-                onClick={() => playGame(2, option)}
-                disabled={!!player2Choice}
+                onClick={() => isMultiplayer && playGame(2, option)}
+                disabled={isMultiplayer ? !!player2Choice : true}
               />
             );
           })}
           <div className="choice-text">
             {player1Choice && player2Choice && (
               <>
-                <p>Jugador 2 eligió:</p>
+                <p>{isMultiplayer ? 'Jugador 2 eligió:' : 'Bot eligió:'}</p>
                 <OptionComponent2 key={player2Choice} context="result" />
               </>
             )}
@@ -136,4 +141,4 @@ const GameWithOtherPlayer = () => {
   );
 };
 
-export default GameWithOtherPlayer;
+export default Game;

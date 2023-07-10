@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import GameScreen from "../organisms/GameScreen";
 import RulesScreen from "../organisms/RulesScreen";
 import Popout from "../organisms/Popout";
 import "./MainScreen.css";
 import logo from "../atoms/welcome-screen.png";
 import { FaHome } from "react-icons/fa";
+import Game from "../organisms/Game";
 
 const MainScreen = () => {
   const [stage, setStage] = useState("welcome");
@@ -36,7 +36,7 @@ const MainScreen = () => {
   } else if (stage === "instructions") {
     mainContent = <RulesScreen showGameScreen={gameMode} />;
   } else if (stage === "gameSingle" || stage === "gameMulti") {
-    mainContent = <GameScreen gameMode={stage} />;
+    mainContent = <Game isMultiplayer={stage === "gameMulti"} />;
   }
 
   return (
