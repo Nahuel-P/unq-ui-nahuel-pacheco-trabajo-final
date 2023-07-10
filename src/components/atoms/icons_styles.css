@@ -3,5 +3,21 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+}
+
+.on-game{
+  max-width: 50px; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.on-game:hover{
+  opacity: 0.5;
+}
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 
 }
