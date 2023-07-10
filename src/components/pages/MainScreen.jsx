@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import RulesScreen from "../organisms/RulesScreen";
+import RulesScreen from "./RulesScreen";
 import Popout from "../organisms/Popout";
 import "./MainScreen.css";
 import logo from "../atoms/welcome-screen.png";
 import { FaHome } from "react-icons/fa";
-import Game from "../organisms/Game";
+import Game from "./Game";
 
 const MainScreen = () => {
   const [stage, setStage] = useState("welcome");
