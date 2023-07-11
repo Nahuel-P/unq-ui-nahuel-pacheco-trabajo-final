@@ -50,3 +50,35 @@
   margin-bottom: 20px;
   text-align: center;
 }
+
+.button-rules{
+  margin: 0 auto;
+  display: block;
+  padding: 20px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #016172;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .backdrop-rules {
+    overflow: auto;
+  }
+  .button-rules{
+    padding: 20px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #016172;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    right: -100px;
+  }
+
+
+}
+

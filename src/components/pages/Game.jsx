@@ -5,6 +5,7 @@ import Rock from "../atoms/Rock";
 import Scissors from "../atoms/Scissors";
 import Spock from "../atoms/Spock";
 import "./Game.css";
+import RulesPopout from "../organisms/RulesPopout";
 
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
 const optionComponents = {
@@ -28,6 +29,9 @@ const Game = ({ isMultiplayer }) => {
   const [result, setResult] = useState(null);
   const [player1Wins, setPlayer1Wins] = useState(0);
   const [player2Wins, setPlayer2Wins] = useState(0);
+  const [isRulesVisible, setRulesVisibility] = useState(false);
+
+  const hideRules = () => setRulesVisibility(false);
 
   useEffect(() => {
     if (player1Choice && player2Choice) {
@@ -79,7 +83,8 @@ const Game = ({ isMultiplayer }) => {
 
   return (
     <div className="game-container">
-      <button className="rules-button">Reglas</button>
+      <button className="rules-button" onClick={() => setRulesVisibility(true)}>Reglas</button>
+      {isRulesVisible && (<RulesPopout onClose={hideRules}/>)}
       <h1 className="game-title">{isMultiplayer ? 'Multijugador' : 'Jugando con bot'}</h1>
       <div className="options-container">
         <div className="column">
