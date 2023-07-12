@@ -1,12 +1,9 @@
-body {
-  overflow: hidden;
-}
 
 .rules-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
   max-height: 100%;
   margin: 0;
   padding: 20px;
