@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/unq-ui-nahuel-pacheco-trabajo-final/static/css/main.d9c3e9ab.css",
+    "main.css": "/unq-ui-nahuel-pacheco-trabajo-final/static/css/main.52231af1.css",
     "main.js": "/unq-ui-nahuel-pacheco-trabajo-final/static/js/main.c9a51363.js",
     "static/media/spock404.gif": "/unq-ui-nahuel-pacheco-trabajo-final/static/media/spock404.f7910ab46312e1209390.gif",
     "static/media/rules.png": "/unq-ui-nahuel-pacheco-trabajo-final/static/media/rules.53f9f652bcf82b57e345.png",
@@ -11,11 +11,11 @@
     "static/media/lizard.png": "/unq-ui-nahuel-pacheco-trabajo-final/static/media/lizard.60d385ab7d7a63e80a26.png",
     "static/media/welcome-screen.png": "/unq-ui-nahuel-pacheco-trabajo-final/static/media/welcome-screen.2f32d2ff0bd27a137678.png",
     "index.html": "/unq-ui-nahuel-pacheco-trabajo-final/index.html",
-    "main.d9c3e9ab.css.map": "/unq-ui-nahuel-pacheco-trabajo-final/static/css/main.d9c3e9ab.css.map",
+    "main.52231af1.css.map": "/unq-ui-nahuel-pacheco-trabajo-final/static/css/main.52231af1.css.map",
     "main.c9a51363.js.map": "/unq-ui-nahuel-pacheco-trabajo-final/static/js/main.c9a51363.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9c3e9ab.css",
+    "static/css/main.52231af1.css",
     "static/js/main.c9a51363.js"
   ]
 }
