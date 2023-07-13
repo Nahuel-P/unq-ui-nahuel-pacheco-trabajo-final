@@ -15,7 +15,7 @@ Una vez que tengas las dependencias instaladas, tenés que bajarte el proyecto:
   1. Hacé clic en code (el ícono verde arriba a la derecha).
   2. En la consola, escribí lo siguiente:
     ```
-    git@github.com:Nahuel-P/unq-ui-nahuel-pacheco-trabajo-final.git
+    git clone git@github.com:Nahuel-P/unq-ui-nahuel-pacheco-trabajo-final.git
     ```
 
 Una vez que hayas realizado estos pasos, tenés que ubicarte en la carpeta `unq-ui-nahuel-pacheco-trabajo-final` y abrir la consola desde ahí.
